@@ -44,7 +44,7 @@ data_file="${data_dir}/${data_name}_data.csv"
 
 cvindices_file="${data_dir}/${data_name}_cvindices.csv"
 #weights_file="${data_dir}/${data_name}_weights.csv"
-fold=5
+fold=0
 
 max_coef=5
 max_size=5
@@ -74,24 +74,10 @@ settings_file="${results_dir}/${run_name}_settings.json"
 cp "${batch_dir}/settings_template.json" "${settings_file}"
 
 #run command
-python3 "${batch_dir}/train_risk_slim.py"  \
-    --data "${data_file}" \
-    --results "${results_file}" \
-    --cvindices "${cvindices_file}" \
-    --fold "${fold}" \
-    --timelimit "${timelimit}" \
-    --settings "${settings_file}" \
-    --w_pos "${w_pos}" \
-    --c0_value "${c0_value}" \
-    --max_size "${max_size}" \
-    --max_coef "${max_coef}" \
-    --max_offset "${max_offset}" \
-    --log "${log_file}"
-
-# we removed cvindices 
 # python3 "${batch_dir}/train_risk_slim.py"  \
 #     --data "${data_file}" \
 #     --results "${results_file}" \
+#     --cvindices "${cvindices_file}" \
 #     --fold "${fold}" \
 #     --timelimit "${timelimit}" \
 #     --settings "${settings_file}" \
@@ -101,6 +87,20 @@ python3 "${batch_dir}/train_risk_slim.py"  \
 #     --max_coef "${max_coef}" \
 #     --max_offset "${max_offset}" \
 #     --log "${log_file}"
+
+# we removed cvindices 
+python3 "${batch_dir}/train_risk_slim.py"  \
+    --data "${data_file}" \
+    --results "${results_file}" \
+    --fold "${fold}" \
+    --timelimit "${timelimit}" \
+    --settings "${settings_file}" \
+    --w_pos "${w_pos}" \
+    --c0_value "${c0_value}" \
+    --max_size "${max_size}" \
+    --max_coef "${max_coef}" \
+    --max_offset "${max_offset}" \
+    --log "${log_file}"
 
 
 exit
