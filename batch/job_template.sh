@@ -38,20 +38,21 @@ results_dir="${batch_dir}/results"
 log_dir="${batch_dir}/logs"
 
 #set job parameters
-data_name="breastcancer"
+# data_name="breastcancer"
+data_name="mammo"
 data_file="${data_dir}/${data_name}_data.csv"
 
 cvindices_file="${data_dir}/${data_name}_cvindices.csv"
 #weights_file="${data_dir}/${data_name}_weights.csv"
-fold=0
+fold=5
 
 max_coef=5
 max_size=5
 max_offset=-1
 w_pos=1.00
-c0_value=1e-6
+c0_value=1e-8
 
-timelimit=60
+timelimit=20
 
 #results_file and log_file must have a UNIQUE name for each job to avoid overwriting existing files
 run_name="${data_name}_fold_${fold}"
@@ -86,6 +87,21 @@ python3 "${batch_dir}/train_risk_slim.py"  \
     --max_coef "${max_coef}" \
     --max_offset "${max_offset}" \
     --log "${log_file}"
+
+# we removed cvindices 
+# python3 "${batch_dir}/train_risk_slim.py"  \
+#     --data "${data_file}" \
+#     --results "${results_file}" \
+#     --fold "${fold}" \
+#     --timelimit "${timelimit}" \
+#     --settings "${settings_file}" \
+#     --w_pos "${w_pos}" \
+#     --c0_value "${c0_value}" \
+#     --max_size "${max_size}" \
+#     --max_coef "${max_coef}" \
+#     --max_offset "${max_offset}" \
+#     --log "${log_file}"
+
 
 exit
 W
