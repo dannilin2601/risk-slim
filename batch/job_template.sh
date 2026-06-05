@@ -44,7 +44,7 @@ data_file="${data_dir}/${data_name}_data.csv"
 
 cvindices_file="${data_dir}/${data_name}_cvindices.csv"
 #weights_file="${data_dir}/${data_name}_weights.csv"
-fold=0
+fold=5
 
 max_coef=5
 max_size=5
