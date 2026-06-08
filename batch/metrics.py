@@ -6,6 +6,8 @@ DATA = "examples/data/mammo_data.csv"
 CV = "examples/data/mammo_cvindices.csv"
 RESULTS = "batch/results/mammo_fold_{}_results.p"
 
+
+
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
